@@ -1,0 +1,8 @@
+# Godot 4+ specific ignores
+.godot/
+2DPuzzleGame2026.csproj
+2DPuzzleGame2026.sln
+icon.svg
+icon.svg.import
+project.godot
+/.vscode
