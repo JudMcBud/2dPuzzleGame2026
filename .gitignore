@@ -6,3 +6,5 @@ icon.svg
 icon.svg.import
 project.godot
 /.vscode
+/downloads
+/assets
