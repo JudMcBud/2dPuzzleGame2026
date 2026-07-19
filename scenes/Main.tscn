@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://dqqvp5io83wqb"]
+[gd_scene load_steps=6 format=4 uid="uid://dqqvp5io83wqb"]
 
 [ext_resource type="Script" path="res://scenes/Main.cs" id="1_kjqab"]
+[ext_resource type="PackedScene" uid="uid://bas4q13t3qj58" path="res://scenes/manager/GridManager.tscn" id="2_cbqfx"]
 [ext_resource type="TileSet" uid="uid://d2hove8tjjpt2" path="res://resources/tiles.tres" id="2_iwlxd"]
 [ext_resource type="TileSet" uid="uid://6s2un2r3quod" path="res://resources/highlight_tileset.tres" id="2_x3x5i"]
 
@@ -10,7 +11,11 @@ size = Vector2(64, 64)
 [node name="Main" type="Node"]
 script = ExtResource("1_kjqab")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="GridManager" parent="." node_paths=PackedStringArray("highlightTileMapLayer", "baseTerrainTileMapLayer") instance=ExtResource("2_cbqfx")]
+highlightTileMapLayer = NodePath("../HighlightTileMapLayer")
+baseTerrainTileMapLayer = NodePath("../BaseTerrainTileMapLayer")
+
+[node name="BaseTerrainTileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAJAAUAAAAGAAEAAAAJAAYAAAAGAAEAAAAKAAYAAAAGAAEAAAAKAAUAAAAGAAAAAAAJAAQAAAAHAAEAAAAIAAQAAAAGAAEAAAAIAAUAAAAGAAEAAAAIAAYAAAAGAAEAAAAIAAcAAAAGAAEAAAAJAAcAAAAGAAEAAAAKAAcAAAAGAAEAAAALAAcAAAAGAAEAAAALAAYAAAAGAAEAAAALAAUAAAAGAAEAAAALAAQAAAAFAAEAAAAKAAMAAAAGAAMAAAAJAAMAAAAGAAEAAAAIAAMAAAAGAAEAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAEAAAAGAAYAAAAFAAEAAAAGAAcAAAAGAAIAAAAHAAcAAAAGAAIAAAAHAAMAAAAGAAAAAAAHAAQAAAAGAAEAAAAGAAQAAAAGAAEAAAAGAAUAAAAFAAEAAAALAAgAAAAGAAEAAAAMAAgAAAAHAAEAAAAMAAkAAAAHAAIAAAALAAkAAAAGAAEAAAAKAAgAAAAGAAEAAAAJAAgAAAAGAAEAAAAIAAgAAAAFAAEAAAAIAAkAAAAFAAIAAAAJAAkAAAAGAAIAAAAKAAkAAAAGAAIAAAAMAAcAAAAHAAEAAAAMAAYAAAAGAAEAAAAMAAUAAAAGAAEAAAANAAUAAAAGAAAAAAAOAAUAAAAGAAMAAAAPAAUAAAAHAAIAAAAPAAQAAAAFAAAAAAAQAAQAAAAHAAMAAAANAAYAAAAHAAIAAAAFAAQAAAAFAAIAAAAFAAMAAAAFAAAAAAAGAAMAAAAGAAAAAAAIAAIAAAAFAAAAAAAJAAIAAAAHAAAAAAAFAAcAAAAGAAAAAAAEAAcAAAAFAAAAAAAEAAgAAAAFAAIAAAAFAAgAAAAHAAIAAAAMAAMAAAAHAAAAAAALAAMAAAAGAAAAAAAMAAQAAAAHAAEAAAALAAoAAAAIAAIAAAA=")
 tile_set = ExtResource("2_iwlxd")
 
