@@ -18,7 +18,9 @@ public partial class BuildingComponent : Node2D
 		// -> GameEvents lets subscribers know -> GridManger hears signal -> GridManager executes the logic for when a
 		// building is placed.
 		AddToGroup(nameof(BuildingComponent));
-		GameEvents.EmitBuildingPlaced(this);
+		// Wrapping the Signal Emission in a Callable allows for .CallDeferred(), which says to run the function at the end
+		// of the frame, after everything else.
+		Callable.From(() => GameEvents.EmitBuildingPlaced(this)).CallDeferred();
 	}
 
 	public Vector2I GetGridCellPosition()
