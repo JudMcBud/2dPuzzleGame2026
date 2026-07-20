@@ -16,6 +16,8 @@ public partial class GridManager : Node
 
     public override void _Ready()
     {
+		// The Instance that this script is subscribing to here is just the autoloaded GameEvents node in the scene tree.
+		// That specific one.
         GameEvents.Instance.BuildingPlaced += OnBuildingPlaced;
     }
 
