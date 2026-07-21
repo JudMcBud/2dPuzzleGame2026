@@ -29,7 +29,7 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAQAAQAAAAAAAAAFAAcAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAkAAQAAAAAAAAAPAAUAAQAAAAAAAAAFAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAA=")
 tile_set = ExtResource("2_iwlxd")
 
-[node name="Base" parent="YSortRoot" instance=ExtResource("5_rflx2")]
+[node name="Base" parent="." instance=ExtResource("5_rflx2")]
 position = Vector2(448, 256)
 
 [node name="HighlightTileMapLayer" type="TileMapLayer" parent="."]
@@ -40,9 +40,16 @@ tile_set = ExtResource("2_x3x5i")
 texture = SubResource("PlaceholderTexture2D_gw6eq")
 centered = false
 
-[node name="PlaceBuildingButton" type="Button" parent="."]
+[node name="PlaceTowerButton" type="Button" parent="."]
 offset_left = 5.0
 offset_top = 683.0
 offset_right = 122.0
 offset_bottom = 714.0
-text = "Place Building"
+text = "Place Tower"
+
+[node name="PlaceVillageButton" type="Button" parent="."]
+offset_left = 137.0
+offset_top = 683.0
+offset_right = 254.0
+offset_bottom = 714.0
+text = "Place Village"
