@@ -1,16 +1,22 @@
 using System.ComponentModel;
 using Game.Autoload;
+using Game.Resources.Building;
 using Godot;
 
 namespace Game.Component;
 
 public partial class BuildingComponent : Node2D
 {
-    [Export]
-    public int BuildableRadius { get; private set; }
+    [Export(PropertyHint.File, "*.tres")]
+    public string buildingResourcePath;
+    public BuildingResource BuildingResource { get; private set; }
 
     public override void _Ready()
     {
+        if (buildingResourcePath != null)
+        {
+            BuildingResource = GD.Load<BuildingResource>(buildingResourcePath);
+        }
         // When the building comes into existence, it emits the signal of "BuildingPlaced" through the GameEvents singleton,
         // which is listened for by the GridManager, which then calls it's own OnBuildingPlaced() method. So the flow looks
         // like this:
