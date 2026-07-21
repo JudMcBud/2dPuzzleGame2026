@@ -14,15 +14,23 @@ script = ExtResource("1_kjqab")
 
 [node name="GridManager" parent="." node_paths=PackedStringArray("highlightTileMapLayer", "baseTerrainTileMapLayer") instance=ExtResource("2_cbqfx")]
 highlightTileMapLayer = NodePath("../HighlightTileMapLayer")
-baseTerrainTileMapLayer = NodePath("../BaseTerrainTileMapLayer")
+baseTerrainTileMapLayer = NodePath("../YSortRoot/BaseTerrainTileMapLayer")
 
-[node name="BaseTerrainTileMapLayer" type="TileMapLayer" parent="."]
+[node name="YSortRoot" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="BaseTerrainTileMapLayer" type="TileMapLayer" parent="YSortRoot"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAJAAUAAAAGAAEAAAAJAAYAAAAGAAEAAAAKAAYAAAAGAAEAAAAKAAUAAAAGAAAAAAAJAAQAAAAHAAEAAAAIAAQAAAAGAAEAAAAIAAUAAAAGAAEAAAAIAAYAAAAGAAEAAAAIAAcAAAAGAAEAAAAJAAcAAAAGAAEAAAAKAAcAAAAGAAEAAAALAAcAAAAGAAEAAAALAAYAAAAGAAEAAAALAAUAAAAGAAEAAAALAAQAAAAFAAEAAAAKAAMAAAAGAAMAAAAJAAMAAAAGAAEAAAAIAAMAAAAGAAEAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAEAAAAGAAYAAAAFAAEAAAAGAAcAAAAGAAIAAAAHAAcAAAAGAAIAAAAHAAMAAAAGAAAAAAAHAAQAAAAGAAEAAAAGAAQAAAAGAAEAAAAGAAUAAAAFAAEAAAALAAgAAAAGAAEAAAAMAAgAAAAHAAEAAAAMAAkAAAAHAAIAAAALAAkAAAAGAAEAAAAKAAgAAAAGAAEAAAAJAAgAAAAGAAEAAAAIAAgAAAAFAAEAAAAIAAkAAAAFAAIAAAAJAAkAAAAGAAIAAAAKAAkAAAAGAAIAAAAMAAcAAAAHAAEAAAAMAAYAAAAGAAEAAAAMAAUAAAAGAAEAAAANAAUAAAAGAAAAAAAOAAUAAAAGAAMAAAAPAAUAAAAHAAIAAAAPAAQAAAAFAAAAAAAQAAQAAAAHAAMAAAANAAYAAAAHAAIAAAAFAAQAAAAFAAIAAAAFAAMAAAAFAAAAAAAGAAMAAAAGAAAAAAAIAAIAAAAFAAAAAAAJAAIAAAAHAAAAAAAFAAcAAAAGAAAAAAAEAAcAAAAFAAAAAAAEAAgAAAAFAAIAAAAFAAgAAAAHAAIAAAAMAAMAAAAHAAAAAAALAAMAAAAGAAAAAAAMAAQAAAAHAAEAAAALAAoAAAAIAAIAAAA=")
 tile_set = ExtResource("2_iwlxd")
 
-[node name="ResourceTileMapLayer" type="TileMapLayer" parent="BaseTerrainTileMapLayer"]
+[node name="ResourceTileMapLayer" type="TileMapLayer" parent="YSortRoot/BaseTerrainTileMapLayer"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAALAAQAAQAAAAAAAAAFAAcAAQAAAAAAAAALAAoAAQAAAAAAAAAMAAkAAQAAAAAAAAAPAAUAAQAAAAAAAAAFAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAA=")
 tile_set = ExtResource("2_iwlxd")
+
+[node name="Base" parent="YSortRoot" instance=ExtResource("5_rflx2")]
+position = Vector2(448, 256)
 
 [node name="HighlightTileMapLayer" type="TileMapLayer" parent="."]
 modulate = Color(1, 1, 1, 0.490196)
@@ -38,6 +46,3 @@ offset_top = 683.0
 offset_right = 122.0
 offset_bottom = 714.0
 text = "Place Building"
-
-[node name="Base" parent="." instance=ExtResource("5_rflx2")]
-position = Vector2(448, 256)
