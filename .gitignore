@@ -8,3 +8,4 @@ project.godot
 /.vscode
 /downloads
 /assets
+.config/dotnet-tools.json
