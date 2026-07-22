@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0gjd2usbi8ci"]
+[gd_scene load_steps=4 format=3 uid="uid://c0gjd2usbi8ci"]
 
 [ext_resource type="Script" path="res://scenes/ui/GameUI.cs" id="1_45w6c"]
+[ext_resource type="Resource" uid="uid://cdcljys40d0wv" path="res://resources/building/tower.tres" id="2_iw7uc"]
+[ext_resource type="Resource" uid="uid://cdhrbyib0el1v" path="res://resources/building/village.tres" id="3_3iqys"]
 
 [node name="GameUI" type="MarginContainer"]
 anchors_preset = 15
@@ -13,18 +15,9 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_45w6c")
+buildingResources = Array[Object]([ExtResource("2_iw7uc"), ExtResource("3_3iqys")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 16
-
-[node name="PlaceTowerButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Place Tower"
-
-[node name="PlaceVillageButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Place Village"
