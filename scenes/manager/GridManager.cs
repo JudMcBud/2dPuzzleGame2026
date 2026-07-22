@@ -11,7 +11,12 @@ public partial class GridManager : Node
 {
     private const string IS_BUILDABLE = "is_buildable";
     private const string IS_WOOD = "is_wood";
+
+    [Signal]
+    public delegate void ResourceTilesUpdatedEventHandler(int collectedTiles);
+
     private HashSet<Vector2I> validBuildableTiles = new();
+    private HashSet<Vector2I> collectedResourceTiles = new();
 
     [Export]
     private TileMapLayer highlightTileMapLayer;
@@ -119,6 +124,21 @@ public partial class GridManager : Node
         validBuildableTiles.ExceptWith(GetOccupiedTiles());
     }
 
+    private void UpdateCollectedResourceTiles(BuildingComponent buildingComponent)
+    {
+        var rootCell = buildingComponent.GetGridCellPosition();
+        var resourceTiles = GetResourceTilesInRadius(
+            rootCell,
+            buildingComponent.BuildingResource.ResourceRadius
+        );
+
+        var oldResourceTileCount = collectedResourceTiles.Count();
+        collectedResourceTiles.UnionWith(resourceTiles);
+
+        if (oldResourceTileCount != collectedResourceTiles.Count())
+            EmitSignal(SignalName.ResourceTilesUpdated, collectedResourceTiles.Count);
+    }
+
     private List<Vector2I> GetTilesInRadius(
         Vector2I rootCell,
         int radius,
@@ -175,5 +195,6 @@ public partial class GridManager : Node
     private void OnBuildingPlaced(BuildingComponent buildingComponent)
     {
         UpdateValidBuildableTiles(buildingComponent);
+        UpdateCollectedResourceTiles(buildingComponent);
     }
 }
