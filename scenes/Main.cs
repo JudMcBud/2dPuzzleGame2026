@@ -57,10 +57,15 @@ public partial class Main : Node
             && (!hoveredGridCell.HasValue || hoveredGridCell.Value != gridPosition)
         )
         {
+            gridManager.ClearHighlightedTiles();
             hoveredGridCell = gridPosition;
             gridManager.HighlightExpandedBuildableTiles(
                 hoveredGridCell.Value,
                 toPlaceBuildingResource.BuildableRadius
+            );
+            gridManager.HighlightResourceTile(
+                hoveredGridCell.Value,
+                toPlaceBuildingResource.ResourceRadius
             );
         }
     }
