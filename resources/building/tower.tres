@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BuildingResource" load_steps=3 format=3 uid="uid://cdcljys40d0wv"]
+[gd_resource type="Resource" script_class="BuildingResource" load_steps=4 format=3 uid="uid://cdcljys40d0wv"]
 
 [ext_resource type="Script" path="res://resources/building/BuildingResource.cs" id="1_5qsbb"]
 [ext_resource type="PackedScene" uid="uid://cekj6w3i83ujk" path="res://scenes/building/Tower.tscn" id="1_gok7l"]
+[ext_resource type="PackedScene" uid="uid://dv7pok6m13wew" path="res://scenes/building/sprite/TowerSprite2D.tscn" id="2_nw1v4"]
 
 [resource]
 script = ExtResource("1_5qsbb")
@@ -10,3 +11,4 @@ ResourceCost = 4
 BuildableRadius = 3
 ResourceRadius = 0
 BuildingScene = ExtResource("1_gok7l")
+SpriteScene = ExtResource("2_nw1v4")
